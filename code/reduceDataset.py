@@ -2,8 +2,6 @@ from pyspark.sql import SparkSession
 from pyspark.sql.functions import col, lit, avg
 import csv
 
-bucket =
-
 spark = SparkSession.builder.appName('StockSummary').getOrCreate()
 
 # dataJuegosOriginal = spark.read.options(inferSchema='True', delimiter=',', header='true').csv('steam_games.csv')
