@@ -32,4 +32,5 @@ dataJuegos = dataJuegos.filter(col('Id').isin(titlesList))
 # print("Ids en reviews:" , titlesList)
 
 # guardar en csv nuevo dataset Juegos en sys.argv[3]=datasetReduced.csv
-dataJuegos.write.option("header"=True).csv(sys.argv[3])
+dataJuegos.coalesce(1).write.option("header",True).csv(sys.argv[3])
+
