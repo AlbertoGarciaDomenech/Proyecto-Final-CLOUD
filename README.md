@@ -70,6 +70,6 @@ Procedemos a enviar el trabajo a Spark:
 
   *gcloud dataproc jobs submit pyspark --cluster nombre-cluster --region=europe-west6 $BUCKET/archivoParaProcesar.py -- $BUCKET/archivo(s)DeDatos $BUCKET/output(s)*
   
-También se puede realizar una ejecución paralela con distintos nodos mediante las opciones:
+También se puede realizar una ejecución paralela con distintos nodos mediante las siguientes opciones, pero ejecutándolo desde el nodo master del cluster con el comando:
 
-  *--num-executors numExecutors --executor-cores numCores*
+  *spark submit --num-executors numExecutors --executor-cores numCores <script>*
