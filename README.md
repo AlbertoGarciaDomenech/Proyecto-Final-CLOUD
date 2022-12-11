@@ -8,7 +8,7 @@
 * [Presentación idea](https://docs.google.com/presentation/d/1bndRXzmOWwVLmoXwjcvGRPQskVZk58VQPU7JXqMCTfA/edit?usp=sharing)
 
 # Descripción:
-Ánalisis relacional y estudio de mercado de ~21 millones reseñas de 300 diferentes videojuegos utilizando técnicas de big data y herramientas de cloud computing
+Ánalisis relacional y estudio de mercado de alrededor de 21 millones reseñas de 300 diferentes videojuegos utilizando técnicas de big data y herramientas de cloud computing
 
 # Datos
 * [Página de Kaggle del dataset de reseñas](https://www.kaggle.com/datasets/najzeko/steam-reviews-2021)
