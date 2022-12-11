@@ -19,7 +19,7 @@ Dataset de 21 millones de reseñas en  diferentes idiomas con las siguientes car
 
 Dataset de la información de 40.000 juegos de la plataforma Steam con las siguientes características: url, types, name, desc_snippet, recent_reviews, all_reviews, release_date, developer, publisher, popular_tags.
 
-#¿Cómo ejecutar el código?
+# ¿Cómo ejecutar el código?
 * Usar Spark en local:
 Para poder ejecutar el código que realiza un procesamiento de los datos, es necesario instalar Java en tu dispositivo Linux. Se puede instalar con el siguiente comando:
   sudo apt install default-jre
