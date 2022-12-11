@@ -34,11 +34,15 @@ También se necesita Python, pero no es necesario instalarlo porque suele suele 
 
 Habiendo instalado Java, es momento de instalar Spark:
 
-  *curl -O https://archive.apache.org/dist/spark/spark-3.3.1/spark-3.3.1-bin-hadoop3.tgz
-  tar xvf spark-3.3.1-bin-hadoop3.tgz
-  sudo mv spark-3.3.1-bin-hadoop3 /usr/local/spark
-  echo 'PATH="$PATH:/usr/local/spark/bin"' >> ~/.profile
-  source ~/.profile*
+  *curl -O https://archive.apache.org/dist/spark/spark-3.3.1/spark-3.3.1-bin-hadoop3.tgz*
+  
+  *tar xvf spark-3.3.1-bin-hadoop3.tgz*
+  
+  *sudo mv spark-3.3.1-bin-hadoop3 /usr/local/spark*
+  
+  *echo 'PATH="$PATH:/usr/local/spark/bin"' >> ~/.profile*
+  
+  *source ~/.profile*
   
 Se cargan los archivos necesarios.
 
