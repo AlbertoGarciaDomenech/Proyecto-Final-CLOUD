@@ -9,7 +9,7 @@ spark = SparkSession.builder.appName('Steam').getOrCreate()
 # gcloud dataproc jobs submit pyspark --cluster example-cluster --region=europe-west6 $BUCKET/procesamiento.py
 #  -- $BUCKET/steam_reviews.csv $BUCKET/languages.csv $BUCKET/videogamesWithMoreReviews.csv 
 # $BUCKET/videogamesWithLessReviews.csv $BUCKET/possitiveReviews.csv $BUCKET/negativeReviews.csv
-# $BUCKET/porcentajeModificadas.csv $BUCKET/steam_games_reduced.csv $BUCKET/num_games.csv $BUCKET/all_games.csv
+# $BUCKET/porcentajeModificadas.csv $BUCKET/numeroModificadas.csv $BUCKET/steam_games_reduced.csv $BUCKET/num_games.csv $BUCKET/all_games.csv
 
 # CVS utilizado: "steam_reviews.csv"
 dataset = spark.read.options(inferSchema='true', delimiter = ',', header='true', multiLine = 'true', escape = '\"').csv(sys.argv[1])
@@ -48,9 +48,18 @@ def reviewsNegativas():
 def porcentajeModificadas():
     reviews = dataset.groupBy('app_name').count().withColumn('numReviews', col('count'))
     reviewsModificadas = dataset.filter(col('timestamp_updated') != col('timestamp_created')).groupBy('app_name').count().withColumn('numReviewsModificadas', col('count'))
-    final = reviewsModificadas.join(reviews,['app_name']).withColumn('porcentaje', col('numReviewsModificadas')*100/col('numReviews')).select('app_name', 'porcentaje')
+    
+    final = reviewsModificadas.join(reviews,['app_name']).withColumn('porcentaje', col('numReviewsModificadas')*100/col('numReviews'))
     final.show()
-    final.write.option("header",True).csv(sys.argv[7])
+    f1 = final.select('app_name', 'porcentaje')
+    f1.show()
+    f1.write.option("header",True).csv(sys.argv[7])
+
+#numero de reviews que han sido modificadas para cada videojuego
+def reviewsModificadas():
+    reviewsModificadas = dataset.filter(col('timestamp_updated') != col('timestamp_created')).groupBy('app_name').count()
+    reviewsModificadas.show()
+    reviewsModificadas.write.option("header",True).csv(sys.argv[8])
 
 # LLamadas a las funciones
 mostUsedLanguages()
@@ -58,18 +67,19 @@ videogames()
 reviewsPositivas()
 reviewsNegativas()
 porcentajeModificadas()
+reviewsModificadas()
 
 # CSV: steam_games_reduced
-datagames = spark.read.options(inferSchema='true', delimiter = ',', header='true', multiLine = 'true', escape = '\"').csv(sys.argv[8])
+#datagames = spark.read.options(inferSchema='true', delimiter = ',', header='true', multiLine = 'true', escape = '\"').csv(sys.argv[9])
 
 def aniosJuegos():
     anios = datagames.withColumn('year', split(datagames['release_date'], ',').getItem(1)).filter(col('year').isNotNull()).filter(length(col('year')) == 5)
     numVideojuegos = anios.groupBy('year').count()
     numVideojuegos.show()
-    numVideojuegos.write.option("header",True).csv(sys.argv[9])
+    numVideojuegos.write.option("header",True).csv(sys.argv[10])
     
     all_videogames = anios.select('name', 'year')
     all_videogames.show() #cada año con su fecha de lanzamiento
-    all_videogames.write.option("header",True).csv(sys.argv[10])
+    all_videogames.write.option("header",True).csv(sys.argv[11])
 
-aniosJuegos()
+#aniosJuegos()
