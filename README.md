@@ -6,6 +6,7 @@
 
 # Links de Interés
 * [Presentación idea](https://docs.google.com/presentation/d/1bndRXzmOWwVLmoXwjcvGRPQskVZk58VQPU7JXqMCTfA/edit?usp=sharing)
+* [Presentación proyecto](https://docs.google.com/presentation/d/1aw33uY-hWUdKajTlh4gqRxzWQbkhSbJq-773M9P2hH8/edit?usp=sharing)
 
 # Descripción:
 Ánalisis relacional y estudio de mercado de alrededor de 21 millones reseñas de 300 diferentes videojuegos utilizando técnicas de big data y herramientas de cloud computing
